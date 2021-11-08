@@ -17,10 +17,10 @@ class dynarr
 
     dynarr(int siz)
     {
-		n = siz;
-		array = new int[n];
+	n = siz;
+	array = new int[n];
         MakeArray();
-	}
+    }
 
     ~dynarr() { delete[] array; };
 
@@ -34,19 +34,19 @@ class dynarr
     }
 
     dynarr(dynarr &Copy)
-     {
+    {
 		n = Copy.n;
 		array = new int[n];
 		for (int i = 0; i < n; i++)
-        {
+        	{
 			array[i] = Copy.array[i];
 		}
-	}
+    }
 
 	int GetVal(int i)
 	{
 		if (i > n or i < 0)
-        {
+        	{
 			cout << "Wrong size \n";
 		}
 		else cout <<"val: " << array[i] << "\n";
@@ -55,32 +55,36 @@ class dynarr
     void SetVal(int i, int val)
     {
 		if (array[i] < -100 or array[i] > 100)
-        {
+        	{
 			cout << "Wrong value" << endl;
+		}
+	    	if (i > n or i < 0)
+		{
+			cout << "Wrong size" << endl;
 		}
 		else array[i] = val;
 	}
 
 	void AddVal(int val)
 	{
-		if (val > -100 or val < 100)
+	if (val > -100 or val < 100)
         {
-			n = n+1;
-			int* newArray = new int[n];
-			for (int i = 0; i < n-1; i++)
-			{
-				newArray[i] = array[i];
-			}
-			delete array;
-			newArray[n-1] = val;
-			array = newArray;
+		n = n+1;
+		int* newArray = new int[n];
+		for (int i = 0; i < n-1; i++)
+		{
+			newArray[i] = array[i];
+		}
+		delete array;
+		newArray[n-1] = val;
+		array = newArray;
 		}
 	}
 
 	void ArraySum(dynarr& Copy)
 	{
 		for (int i = 0; i < n; i++)
-        {
+        	{
 			array[i] = array[i] + Copy.array[i];
 		}
 	}
@@ -88,7 +92,7 @@ class dynarr
 	void ArraySub(dynarr& Copy)
 	{
 		for (int i = 0; i < n; i++)
-        {
+        	{
 			array[i] = array[i] - Copy.array[i];
 		}
 	}
